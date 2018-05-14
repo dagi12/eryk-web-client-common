@@ -12,3 +12,8 @@ Interfejs użytkownika dla aplikacji do składania zamówień oraz rezerwacji.
 - Dla metod przekazywanych dalej dodawaj prefix "on" np. onUpdate
 - Dla metod wyszukujących wg kryteriów "findBy..."
 - Dla metod z wszystkimi rekordami po prostu "all"
+
+# Good practices
+
+- do not use colons in labels
+- 

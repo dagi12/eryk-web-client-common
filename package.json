@@ -1,0 +1,25 @@
+{
+  "name": "eryk-web-client-common",
+  "version": "1.0.0",
+  "description": "Common stuff used by me across js projects.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/dagi12/eryk-web-client-common.git"
+  },
+  "keywords": [
+    "js",
+    "es6",
+    "util",
+    "helper"
+  ],
+  "author": "Eryk Mariankowski",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dagi12/eryk-web-client-common/issues"
+  },
+  "homepage": "https://github.com/dagi12/eryk-web-client-common#readme"
+}

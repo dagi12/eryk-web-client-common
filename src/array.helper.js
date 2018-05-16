@@ -1,5 +1,4 @@
 import {UtilService} from './util.service';
-import {DateService} from './date.service';
 
 export function deleteByProperty(arr, propertyName, propertyValue, callback) {
   for (let i = 0; i < arr.length; ++i) {
@@ -27,7 +26,7 @@ export function propertyArray(arr, property) {
 export function datify(props, arr) {
   for (const item of arr) {
     for (const prop of props) {
-      item[prop] = DateService.prepareDateString(item[prop]);
+      item[prop] = prepareDateString(item[prop]);
     }
   }
   return arr;
@@ -37,7 +36,7 @@ export function datifyResponse(props, res) {
   const arr = res.data;
   for (const item of arr) {
     for (const prop of props) {
-      item[prop] = DateService.prepareDateString(item[prop]);
+      item[prop] = prepareDateString(item[prop]);
     }
   }
   return res;

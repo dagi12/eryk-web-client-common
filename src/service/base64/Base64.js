@@ -6,11 +6,11 @@ import StandardBase64 from './StandardBase64';
 import IEBase64 from './IEBase64';
 
 function decide() {
-    if (BrowserService.isInternetExplorer()) {
-        return new IEBase64();
-    } else {
-        return new StandardBase64();
-    }
+  if (BrowserService.isInternetExplorer()) {
+    return new IEBase64();
+  } else {
+    return new StandardBase64();
+  }
 }
 
 export default decide();

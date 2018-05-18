@@ -3,11 +3,11 @@
  */
 class BrowserService {
 
-    static isInternetExplorer() {
-        const ua = window.navigator.userAgent;
-        const msie = ua.indexOf('MSIE ');
-        return msie > 0
-    }
+  static isInternetExplorer() {
+    const ua = window.navigator.userAgent;
+    const msie = ua.indexOf('MSIE ');
+    return msie > 0
+  }
 
 }
 

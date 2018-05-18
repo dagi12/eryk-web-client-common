@@ -5,8 +5,8 @@
 
 class TestUtil {
 
-    static mockLocalStorage() {
-    }
+  static mockLocalStorage() {
+  }
 
 }
 

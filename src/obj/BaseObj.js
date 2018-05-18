@@ -5,9 +5,9 @@ import {copyParams} from '../util/JsHelper';
 
 export default class BaseObj {
 
-    constructor(obj) {
-        copyParams(obj, this);
-    }
+  constructor(obj) {
+    copyParams(obj, this);
+  }
 
 
 }

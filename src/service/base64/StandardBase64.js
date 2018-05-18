@@ -4,11 +4,11 @@
 
 export default class StandardBase64 {
 
-    encode(input) {
-        return btoa(input);
-    }
+  encode(input) {
+    return btoa(input);
+  }
 
-    decode(input) {
-        return atob(input);
-    }
+  decode(input) {
+    return atob(input);
+  }
 }

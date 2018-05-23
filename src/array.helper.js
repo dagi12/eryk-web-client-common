@@ -1,4 +1,5 @@
 import {UtilService} from './util.service';
+import {prepareDateString} from './date.service';
 
 export function deleteByProperty(arr, propertyName, propertyValue, callback) {
   for (let i = 0; i < arr.length; ++i) {

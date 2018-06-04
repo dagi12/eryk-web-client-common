@@ -10,8 +10,8 @@ Interfejs użytkownika dla aplikacji do składania zamówień oraz rezerwacji.
     - "remove" -> "delete"
 - unikaj słowa kluczowego get
 - Dla metod przekazywanych dalej dodawaj prefix "on" np. onUpdate
-- Dla metod wyszukujących wg kryteriów "findBy..."
-- Dla metod z wszystkimi rekordami po prostu "all"
+- Dla metod wyszukujących wg kryteriów "fetch<Plural>By..."
+- Dla metod z wszystkimi rekordami po prostu "fetch<Plural>"
 
 # Good practices
 

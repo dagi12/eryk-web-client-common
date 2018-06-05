@@ -2,38 +2,29 @@
  * Created by eryk on 14.05.17.
  */
 
-const HEADER_KEY = 'header';
+const TOKEN_KEY = 'id_token';
 
 class LocalStorageManager {
 
   constructor() {
-    this.header = this.getHeader();
+    this.token = this.getToken();
   }
 
-  login(header) {
-    this.header = header;
-    window.localStorage.setItem(HEADER_KEY, JSON.stringify(header));
+  login(token) {
+    this.token = token;
+    localStorage.setItem(TOKEN_KEY, token);
   }
 
   logout() {
-    this.header = null;
-    window.localStorage.removeItem(HEADER_KEY);
+    this.token = null;
+    localStorage.removeItem(TOKEN_KEY);
   }
 
-  getHeader() {
-    if (!this.header) {
-      const header = window.localStorage.getItem(HEADER_KEY);
-      if (header) {
-        try {
-          this.header = JSON.parse(header);
-        } catch (e) {
-          return null;
-        }
-        return this.header;
-      }
-      return null;
+  getToken() {
+    if (!this.token) {
+      this.token = localStorage.getItem(TOKEN_KEY);
     }
-    return this.header;
+    return this.token;
   }
 
 }

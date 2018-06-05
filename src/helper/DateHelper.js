@@ -72,6 +72,7 @@ function newMoment(timestamp) {
 export {
   pad,
   newDate,
+  makeDates,
   makeDateArr,
   newMoment,
   makeMoments,

@@ -44,14 +44,22 @@ export function currMonthRange() {
   };
 }
 
-export function prepareDateString(uncastedDate) {
+export function monthAgo() {
+  const d = new Date();
+  d.setMonth(d.getMonth() - 1);
+  d.setHours(0, 0, 0);
+  d.setMilliseconds(0);
+  return d;
+}
 
-  function addZero(item) {
-    if (item < 10) {
-      return '0' + item;
-    }
-    return item;
+function addZero(item) {
+  if (item < 10) {
+    return '0' + item;
   }
+  return item;
+}
+
+export function prepareDateString(uncastedDate) {
 
   const date = prepareDate(uncastedDate);
   if (date) {
@@ -62,6 +70,21 @@ export function prepareDateString(uncastedDate) {
     return year + '-' + addZero(month) + '-' + addZero(day) + ' ' + addZero(hours) + ':00';
   }
   return '';
+}
+
+export function apiDateFormat(date) {
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const year = date.getFullYear();
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const seconds = date.getSeconds();
+  return year + '-' +
+    addZero(month) + '-' +
+    addZero(day) + ' ' +
+    addZero(hours) + ':' +
+    addZero(minutes) + ':' +
+    addZero(seconds);
 }
 
 const dayInMilli = 24 * 3600 * 1000;

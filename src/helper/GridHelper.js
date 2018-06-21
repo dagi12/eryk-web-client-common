@@ -3,8 +3,8 @@ import {pad} from './DateHelper';
 function dateCellRenderer(params) {
   if (params.value) {
     return pad(params.value.getDate(), 2) + '/' +
-            pad(params.value.getMonth() + 1, 2) + '/' +
-            params.value.getFullYear();
+      pad(params.value.getMonth() + 1, 2) + '/' +
+      params.value.getFullYear();
   }
   return null;
 }

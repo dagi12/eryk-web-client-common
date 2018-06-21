@@ -6,7 +6,7 @@ export default function MyEnum(keys) {
     .keys(keys)
     .reduce((object, key) => {
       object[keys[key]] = key;
-      return object
+      return object;
     }, {});
 
   return Object.freeze(
@@ -15,6 +15,5 @@ export default function MyEnum(keys) {
       return object;
     }, v => {
       return i[v];
-    }
-    ));
+    }));
 }

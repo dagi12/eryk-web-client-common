@@ -7,7 +7,9 @@ import moment from 'moment';
 // Utility function used to pad the date formatting.1
 function pad(num, totalStringSize) {
   let asString = num + '';
-  while (asString.length < totalStringSize) {asString = '0' + asString;}
+  while (asString.length < totalStringSize) {
+    asString = '0' + asString;
+  }
   return asString;
 }
 

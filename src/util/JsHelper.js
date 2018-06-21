@@ -27,4 +27,4 @@ export {
   isUndefined,
   instantiateArr,
   copyParams,
-}
+};

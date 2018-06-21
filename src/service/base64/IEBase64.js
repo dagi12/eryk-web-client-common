@@ -31,10 +31,10 @@ export default class IEBase64 {
         enc4 = 64;
       }
       output = this.output +
-                _keyStr.charAt(enc1) +
-                _keyStr.charAt(enc2) +
-                _keyStr.charAt(enc3) +
-                _keyStr.charAt(enc4);
+        _keyStr.charAt(enc1) +
+        _keyStr.charAt(enc2) +
+        _keyStr.charAt(enc3) +
+        _keyStr.charAt(enc4);
     }
 
     return output;

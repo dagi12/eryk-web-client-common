@@ -14,9 +14,13 @@ export function deleteByProperty(arr, propertyName, propertyValue, callback) {
   }
 }
 
+function isDefined(value) {
+  return typeof value !== 'undefined';
+}
+
 export function propertyArray(arr, property) {
   const propertyArr = [];
-  if (arr && property && arr.length > 0 && angular.isDefined(arr[0][property])) {
+  if (arr && property && arr.length > 0 && isDefined(arr[0][property])) {
     for (const item of arr) {
       propertyArr.push(item[property]);
     }
@@ -55,9 +59,9 @@ export function iterateTwoArrays(arr1, arr2, callback) {
   if (!arr1 || !arr2 || arr1.length !== arr2.length) {
     return;
   }
-  $.each(arr1, (i) => {
+  for (let i = 0; i < arr1.length; ++i) {
     callback(arr1[i], arr2[i]);
-  });
+  }
 }
 
 export function isEmpty(arr) {
@@ -93,7 +97,7 @@ export function itemByProperty(arr, propertyName, propertyValue, ifCallback, ind
 
 export function itemByFnResult(arr, fnName, fnValue) {
   let result = null;
-  arr.some((element) => {
+  arr.some(element => {
     let value;
     if (element[fnName]) {
       value = element[fnName]();
@@ -114,10 +118,29 @@ export function arrayToMap(map, arr, nameProperty) {
 }
 
 export function containsProperty(arr, propertyName, property) {
-  const result = $.grep(arr, (e) => {
+  const result = grep(arr, (e) => {
     return e[propertyName] === property;
   });
   return (result.length > 0);
+}
+
+function grep(elems, callback, invert) {
+  let callbackInverse,
+    matches = [],
+    i = 0,
+    length = elems.length,
+    callbackExpect = !invert;
+
+  // Go through the array, only saving the items
+  // that pass the validator function
+  for (; i < length; i++) {
+    callbackInverse = !callback(elems[i], i);
+    if (callbackInverse !== callbackExpect) {
+      matches.push(elems[i]);
+    }
+  }
+
+  return matches;
 }
 
 

@@ -16,8 +16,7 @@ export /*@ngInject*/function urlEncodedTransformer(obj) {
 }
 
 function _prepareDate(date) {
-  const day = date.getDate(), month = date.getMonth() +
-        1, year = date.getFullYear(), hours = date.getHours();
+  const day = date.getDate(), month = date.getMonth() + 1, year = date.getFullYear(), hours = date.getHours();
   return year + '-' + _addZero(month) + '-' + _addZero(day) + '-' + _addZero(hours) + ':00';
 }
 
@@ -96,7 +95,7 @@ export class UtilService {
   }
 
   static clone(obj) {
-    return angular.fromJson(angular.toJson(obj));
+    return JSON.parse(JSON.stringify(obj));
   }
 
   static cloneArr(arr) {

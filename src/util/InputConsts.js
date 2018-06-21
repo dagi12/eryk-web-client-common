@@ -6,4 +6,4 @@ const MAX_LENGTH = 30;
 
 export {
   MAX_LENGTH
-}
+};

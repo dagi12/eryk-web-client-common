@@ -118,31 +118,13 @@ export function arrayToMap(map, arr, nameProperty) {
 }
 
 export function containsProperty(arr, propertyName, property) {
-  const result = grep(arr, (e) => {
-    return e[propertyName] === property;
-  });
-  return (result.length > 0);
-}
-
-function grep(elems, callback, invert) {
-  let callbackInverse,
-    matches = [],
-    i = 0,
-    length = elems.length,
-    callbackExpect = !invert;
-
-  // Go through the array, only saving the items
-  // that pass the validator function
-  for (; i < length; i++) {
-    callbackInverse = !callback(elems[i], i);
-    if (callbackInverse !== callbackExpect) {
-      matches.push(elems[i]);
+  for (const item of arr) {
+    if (item[propertyName] === property) {
+      return true;
     }
   }
-
-  return matches;
+  return false;
 }
-
 
 export function objectNotEmpty(model) {
   return model && typeof model === 'object' && Object.getOwnPropertyNames(model).length > 0;

@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export function dateWithoutHours() {
   const date = new Date();
   date.setHours(0, 0, 0, 0);
@@ -12,8 +14,14 @@ export function toDateInputValue() {
 }
 
 export function prepareDate(date) {
-  if (date && (typeof date === 'number' || typeof date === 'string')) {
-    return new Date(date);
+  if (date) {
+    if (typeof date === 'number') {
+      return new Date(date);
+    } else if (typeof date === 'string') {
+      return moment(date).toDate();
+    } else {
+      return date;
+    }
   }
   return date;
 }

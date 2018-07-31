@@ -38,8 +38,8 @@ function newDate(timestamp) {
   return undefined;
 }
 
-function makeDates(obj, ...props) {
-  for (const prop of props) {
+function makeDates(obj, arr) {
+  for (const prop of arr) {
     obj[prop] = newDate(obj[prop]);
   }
   return obj;

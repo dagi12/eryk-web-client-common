@@ -3,6 +3,7 @@
  */
 
 import moment from 'moment';
+import {prepareDate} from '../date.service';
 
 // Utility function used to pad the date formatting.1
 function pad(num, totalStringSize) {
@@ -31,16 +32,9 @@ function parseDate(dd, mm, rrrr) {
   return date;
 }
 
-function newDate(timestamp) {
-  if (timestamp && timestamp > 10000) {
-    return new Date(timestamp);
-  }
-  return undefined;
-}
-
 function makeDates(obj, arr) {
   for (const prop of arr) {
-    obj[prop] = newDate(obj[prop]);
+    obj[prop] = prepareDate(obj[prop]);
   }
   return obj;
 }
@@ -56,7 +50,7 @@ function makeDateArr(arr, dateProps) {
   const newArr = [];
   for (const elem of arr) {
     for (const prop of dateProps) {
-      elem[prop] = newDate(elem[prop]);
+      elem[prop] = prepareDate(elem[prop]);
     }
     newArr.push(elem);
   }
@@ -73,7 +67,6 @@ function newMoment(timestamp) {
 
 export {
   pad,
-  newDate,
   makeDates,
   makeDateArr,
   newMoment,

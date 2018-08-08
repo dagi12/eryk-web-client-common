@@ -14,24 +14,6 @@ function pad(num, totalStringSize) {
   return asString;
 }
 
-function parseDate(dd, mm, rrrr) {
-  if (dd.trim() === '' || mm.trim() === '' || rrrr.trim() === '') {
-    return null;
-  }
-  let day = Number(dd);
-  let month = Number(mm);
-  let year = Number(rrrr);
-  let date = new Date(year, month - 1, day);
-  if (isNaN(date.getTime())) {
-    return null;
-  }
-  if (date.getDate() !== day || date.getMonth() + 1 !== month || date.getFullYear() !== year) {
-    return null;
-  }
-
-  return date;
-}
-
 function makeDates(obj, arr) {
   for (const prop of arr) {
     obj[prop] = prepareDate(obj[prop]);
@@ -44,6 +26,17 @@ function makeMoments(obj, ...props) {
     obj[prop] = newMoment(obj[prop]);
   }
   return obj;
+}
+
+function makeMomentArr(arr, dateProps) {
+  const newArr = [];
+  for (const elem of arr) {
+    for (const prop of dateProps) {
+      elem[prop] = newMoment(elem[prop]);
+    }
+    newArr.push(elem);
+  }
+  return newArr;
 }
 
 function makeDateArr(arr, dateProps) {
@@ -71,4 +64,5 @@ export {
   makeDateArr,
   newMoment,
   makeMoments,
+  makeMomentArr
 };

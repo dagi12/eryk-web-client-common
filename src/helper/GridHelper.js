@@ -2,9 +2,16 @@ import {pad} from './DateHelper';
 
 function dateCellRenderer(params) {
   if (params.value) {
-    return pad(params.value.getDate(), 2) + '/' +
-      pad(params.value.getMonth() + 1, 2) + '/' +
+    return pad(params.value.getDate(), 2) + '.' +
+      pad(params.value.getMonth() + 1, 2) + '.' +
       params.value.getFullYear();
+  }
+  return null;
+}
+
+function momentCellRenderer(params) {
+  if (params.value) {
+    return params.value.format('DD.MM.YYYY');
   }
   return null;
 }
@@ -39,5 +46,6 @@ function yesNoRenderer(params) {
 export {
   dateCellRenderer,
   yesNoRenderer,
-  moneyRenderer
+  moneyRenderer,
+  momentCellRenderer
 };

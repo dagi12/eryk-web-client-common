@@ -6,11 +6,18 @@ export function dateWithoutHours() {
   return date;
 }
 
-export function toDateInputValue() {
+export function todayInputValue() {
   const today = new Date();
   const local = new Date();
   local.setMinutes(today.getMinutes() - today.getTimezoneOffset());
   return local.toJSON().slice(0, 10);
+}
+
+export const toInputFromMomentValue = momentInstance => momentInstance.format('YYYY-MM-DD');
+
+export function toDateFromInputValue(s) {
+  const b = s.split(/\D/);
+  return new Date(b[0], --b[1], b[2]);
 }
 
 export function prepareDate(date) {
@@ -35,9 +42,9 @@ export function verifyPeselBirthDate(date, _peselDate) {
 
 
 export function dateFromPesel(pesel) {
-  const month = parseInt(pesel.substring(2, 4));
-  const year = parseInt(pesel.substring(0, 2)) + (month > 19 ? 2000 : 1900);
-  const day = parseInt(pesel.substring(4, 6));
+  const month = parseInt(pesel.substring(2, 4), 10);
+  const year = parseInt(pesel.substring(0, 2), 10) + (month > 19 ? 2000 : 1900);
+  const day = parseInt(pesel.substring(4, 6), 10);
   return new Date(year, month - 1, day);
 }
 
@@ -103,7 +110,7 @@ export function diffInDays(d1, d2) {
   const t1 = d1.getTime();
   const diff = t2 - t1;
   const i = diff / dayInMilli;
-  return parseInt(i);
+  return parseInt(i, 10);
 }
 
 export function diffInWeeks(d1, d2) {
@@ -111,7 +118,7 @@ export function diffInWeeks(d1, d2) {
   const t1 = d1.getTime();
   const diff = t2 - t1;
   const i = diff / weekInMilli;
-  return parseInt(i);
+  return parseInt(i, 10);
 }
 
 export function diffInMonths(d1, d2) {

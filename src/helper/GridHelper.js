@@ -19,7 +19,7 @@ function momentCellRenderer(params) {
 
 function moneyRenderer(params) {
   if (params.value) {
-    return params.value.toFixed(2);
+    return parseInt(params.value, 10).toFixed(2);
   }
   return '0.00';
 }

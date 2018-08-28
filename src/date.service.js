@@ -22,12 +22,14 @@ export function toDateFromInputValue(s) {
 
 export function prepareDate(date) {
   if (date) {
-    if (typeof date === 'number') {
+    if (date instanceof Date) {
+      return date;
+    } else if (typeof date === 'number') {
       return new Date(date);
     } else if (typeof date === 'string') {
       return moment(date).toDate();
-    } else {
-      return date;
+    } else if (moment.isMoment(date)) {
+      return moment.toDate();
     }
   }
   return date;

@@ -1,13 +1,13 @@
 import {pad} from './DateHelper';
+import {prepareDate} from '../date.service';
 
-function dateCellRenderer(params) {
-  if (params.value) {
-    return pad(params.value.getDate(), 2) + '.' +
-      pad(params.value.getMonth() + 1, 2) + '.' +
-      params.value.getFullYear();
-  }
-  return null;
+function dateToString(date) {
+  return pad(date.getDate(), 2) + '.' +
+    pad(date.getMonth() + 1, 2) + '.' +
+    date.getFullYear();
 }
+
+const dateCellRenderer = params => params.value ? dateToString(prepareDate(params.value)) : null;
 
 function momentCellRenderer(params) {
   if (params.value) {

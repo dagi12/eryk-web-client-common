@@ -23,6 +23,11 @@ function copyParams(src, dest) {
   }
 }
 
+export const throwIfMissing = p => {
+  throw new Error(`Missing parameter: ${p}`);
+};
+
+
 export {
   isUndefined,
   instantiateArr,

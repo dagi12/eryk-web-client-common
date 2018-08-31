@@ -23,6 +23,13 @@ function copyParams(src, dest) {
   }
 }
 
+export function deleteProps(obj, ...props) {
+  props.forEach(value => {
+    obj[value] = null;
+    delete obj[value];
+  });
+}
+
 export const throwIfMissing = p => {
   throw new Error(`Missing parameter: ${p}`);
 };

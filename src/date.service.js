@@ -6,6 +6,12 @@ export function dateWithoutHours() {
   return date;
 }
 
+export function momentToMidnight() {
+  const date = new Date();
+  date.setHours(23, 59, 0, 0);
+  return moment(date);
+}
+
 export function todayInputValue() {
   const today = new Date();
   const local = new Date();

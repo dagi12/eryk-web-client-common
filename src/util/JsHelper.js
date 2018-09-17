@@ -34,6 +34,16 @@ export const throwIfMissing = p => {
   throw new Error(`Missing parameter: ${p}`);
 };
 
+export function cloneObject(clonedObject) {
+  const newObject = Object.assign({}, clonedObject);
+  for (const prop in clonedObject) {
+    if (clonedObject.hasOwnProperty(prop)) {
+      newObject[prop] = clonedObject[prop];
+    }
+  }
+  return newObject;
+}
+
 
 export {
   isUndefined,

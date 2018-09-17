@@ -140,3 +140,4 @@ export function diffInMonths(d1, d2) {
 export function diffInYears(d1, d2) {
   return d2.getFullYear() - d1.getFullYear();
 }
+

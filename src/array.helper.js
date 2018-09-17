@@ -117,6 +117,14 @@ export function arrayToMap(map, arr, nameProperty) {
   }
 }
 
+export function arrayToMap2(arr, nameProperty) {
+  const map = {};
+  for (const item of arr) {
+    map[item[nameProperty]] = item;
+  }
+  return map;
+}
+
 export function containsProperty(arr, propertyName, property) {
   for (const item of arr) {
     if (item[propertyName] === property) {

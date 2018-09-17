@@ -1,3 +1,11 @@
+export function requiredProps(...props) {
+  for (const item of props) {
+    if (!item) {
+      throw new Error('attribute is required');
+    }
+  }
+}
+
 function _addZero(item) {
   if (item < 10) {
     return '0' + item;

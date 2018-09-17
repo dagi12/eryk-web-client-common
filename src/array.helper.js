@@ -110,11 +110,12 @@ export function itemByFnResult(arr, fnName, fnValue) {
   return result;
 }
 
-export function arrayToMap(map, arr, nameProperty) {
+export function arrayToMap(arr, nameProperty, map = {}) {
   for (const [index, step] of arr.entries()) {
     step.arrIndex = index;
     map[step[nameProperty]] = step;
   }
+  return map;
 }
 
 export function arrayToMap2(arr, nameProperty) {

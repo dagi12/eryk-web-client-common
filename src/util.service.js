@@ -115,3 +115,7 @@ export class UtilService {
   }
 
 }
+
+export function isPreviewOrEdit(mode) {
+  return mode === 2 || mode === 3;
+}

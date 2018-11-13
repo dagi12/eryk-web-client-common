@@ -2,7 +2,7 @@
  * Created by eryk on 14.05.17.
  */
 
-const TOKEN_KEY = 'id_token';
+export const TOKEN_KEY = 'id_token';
 
 class LocalStorageManager {
 

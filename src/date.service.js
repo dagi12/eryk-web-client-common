@@ -90,7 +90,8 @@ export function prepareDateString(uncastedDate) {
     const month = date.getMonth() + 1;
     const year = date.getFullYear();
     const hours = date.getHours();
-    return year + '-' + addZero(month) + '-' + addZero(day) + ' ' + addZero(hours) + ':00';
+    const minutes = date.getMinutes();
+    return year + '-' + addZero(month) + '-' + addZero(day) + ' ' + addZero(hours) + ':' + addZero(minutes);
   }
   return '';
 }

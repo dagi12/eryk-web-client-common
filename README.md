@@ -12,6 +12,8 @@ Interfejs użytkownika dla aplikacji do składania zamówień oraz rezerwacji.
 - Dla metod przekazywanych dalej dodawaj prefix "on" np. onUpdate
 - Dla metod wyszukujących wg kryteriów "fetch<Plural>By..."
 - Dla metod z wszystkimi rekordami po prostu "fetch<Plural>"
+- wspólny format daty "dd-mm-rrrr gg:hh"
+- nie podpowiadaj haseł na formularzu zmiany hasła x
 
 # Good practices
 

@@ -91,7 +91,7 @@ export function prepareDateString(uncastedDate) {
     const year = date.getFullYear();
     const hours = date.getHours();
     const minutes = date.getMinutes();
-    return year + '-' + addZero(month) + '-' + addZero(day) + ' ' + addZero(hours) + ':' + addZero(minutes);
+    return addZero(day) + '-' + addZero(month) + '-' + year + ' ' + addZero(hours) + ':' + addZero(minutes);
   }
   return '';
 }

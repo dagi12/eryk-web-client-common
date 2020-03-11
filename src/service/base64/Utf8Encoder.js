@@ -1,10 +1,11 @@
+/* eslint-disable no-bitwise */
 /**
  * Created by Eryk Mariankowski on 20.07.2017.
  */
 
 export default class Utf8Encoder {
 
-  static utf8_decode(utfText) {
+  static utf8Decode(utfText) {
     let string = '';
     let i = 0;
     let c = 0;
@@ -18,13 +19,11 @@ export default class Utf8Encoder {
       if (c < 128) {
         string += String.fromCharCode(c);
         i++;
-      }
-      else if ((c > 191) && (c < 224)) {
+      } else if ((c > 191) && (c < 224)) {
         c2 = utfText.charCodeAt(i + 1);
         string += String.fromCharCode(((c & 31) << 6) | (c2 & 63));
         i += 2;
-      }
-      else {
+      } else {
         c2 = utfText.charCodeAt(i + 1);
         c3 = utfText.charCodeAt(i + 2);
         string += String.fromCharCode(((c & 15) << 12) | ((c2 & 63) << 6) | (c3 & 63));
@@ -36,7 +35,7 @@ export default class Utf8Encoder {
     return string;
   }
 
-  static utf8_encode(string) {
+  static utf8Encode(string) {
     string = string.replace(/\r\n/g, '\n');
     let utfText = '';
 
@@ -46,12 +45,10 @@ export default class Utf8Encoder {
 
       if (c < 128) {
         utfText += String.fromCharCode(c);
-      }
-      else if ((c > 127) && (c < 2048)) {
+      } else if ((c > 127) && (c < 2048)) {
         utfText += String.fromCharCode((c >> 6) | 192);
         utfText += String.fromCharCode((c & 63) | 128);
-      }
-      else {
+      } else {
         utfText += String.fromCharCode((c >> 12) | 224);
         utfText += String.fromCharCode(((c >> 6) & 63) | 128);
         utfText += String.fromCharCode((c & 63) | 128);

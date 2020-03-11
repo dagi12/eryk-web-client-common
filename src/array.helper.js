@@ -1,5 +1,5 @@
-import {UtilService} from './util.service';
 import {prepareDateString} from './date.service';
+import {UtilService} from './util.service';
 
 export function deleteByProperty(arr, propertyName, propertyValue, callback) {
   for (let i = 0; i < arr.length; ++i) {
@@ -78,7 +78,8 @@ export function arrayClassification(Class, arr) {
   return classificatedArr;
 }
 
-export function itemByProperty(arr, propertyName, propertyValue, ifCallback, indexOnly) {
+// eslint-disable-next-line complexity
+export function _itemByProperty(arr, propertyName, propertyValue, ifCallback, indexOnly) {
   for (const [index, element] of arr.entries()) {
     const nestedProp = propertyName.indexOf('.') > -1 ?
       UtilService.getNestedProp(element, propertyName) :

@@ -1,13 +1,11 @@
-import {pad} from './DateHelper';
-import {prepareDate} from '../date.service';
+import { prepareDate } from '../date.service';
+import { pad } from './DateHelper';
 
 function dateToString(date) {
-  return pad(date.getDate(), 2) + '.' +
-    pad(date.getMonth() + 1, 2) + '.' +
-    date.getFullYear();
+  return pad(date.getDate(), 2) + '.' + pad(date.getMonth() + 1, 2) + '.' + date.getFullYear();
 }
 
-const dateCellRenderer = params => params.value ? dateToString(prepareDate(params.value)) : null;
+const dateCellRenderer = params => (params.value ? dateToString(prepareDate(params.value)) : null);
 
 function momentCellRenderer(params) {
   if (params.value) {
@@ -16,14 +14,12 @@ function momentCellRenderer(params) {
   return null;
 }
 
-
 function moneyRenderer(params) {
   if (params.value) {
-    return parseFloat(params.value, 10).toFixed(2);
+    return parseFloat(params.value).toFixed(2);
   }
   return '0.00';
 }
-
 
 // function momentCellRenderer(params) {
 //     if (params.value) {
@@ -43,9 +39,4 @@ function yesNoRenderer(params) {
   return '';
 }
 
-export {
-  dateCellRenderer,
-  yesNoRenderer,
-  moneyRenderer,
-  momentCellRenderer
-};
+export { dateCellRenderer, yesNoRenderer, moneyRenderer, momentCellRenderer };

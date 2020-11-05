@@ -6,6 +6,7 @@ import Utf8Encoder from './Utf8Encoder';
 const _keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 
 export default class IEBase64 {
+  output: string;
 
   encode(input) {
     let output = '';

@@ -35,7 +35,7 @@ export function prepareDate(date) {
     } else if (typeof date === 'string') {
       return moment(date).toDate();
     } else if (moment.isMoment(date)) {
-      return moment.toDate();
+      return moment().toDate();
     }
   }
   return date;
@@ -43,11 +43,12 @@ export function prepareDate(date) {
 
 export function verifyPeselBirthDate(date, _peselDate) {
   const peselDate = dateFromPesel(_peselDate);
-  return date.getFullYear() === peselDate.getFullYear() &&
+  return (
+    date.getFullYear() === peselDate.getFullYear() &&
     date.getMonth() === peselDate.getMonth() &&
-    date.getDay() === peselDate.getDay();
+    date.getDay() === peselDate.getDay()
+  );
 }
-
 
 export function dateFromPesel(pesel) {
   const month = parseInt(pesel.substring(2, 4), 10);
@@ -63,7 +64,7 @@ export function currMonthRange() {
 
   return {
     start: firstDay,
-    end: lastDay
+    end: lastDay,
   };
 }
 
@@ -83,7 +84,6 @@ function addZero(item) {
 }
 
 export function prepareDateString(uncastedDate) {
-
   const date = prepareDate(uncastedDate);
   if (date) {
     const day = date.getDate();
@@ -103,12 +103,19 @@ export function apiDateFormat(date) {
   const hours = date.getHours();
   const minutes = date.getMinutes();
   const seconds = date.getSeconds();
-  return year + '-' +
-    addZero(month) + '-' +
-    addZero(day) + ' ' +
-    addZero(hours) + ':' +
-    addZero(minutes) + ':' +
-    addZero(seconds);
+  return (
+    year +
+    '-' +
+    addZero(month) +
+    '-' +
+    addZero(day) +
+    ' ' +
+    addZero(hours) +
+    ':' +
+    addZero(minutes) +
+    ':' +
+    addZero(seconds)
+  );
 }
 
 const dayInMilli = 24 * 3600 * 1000;
@@ -119,7 +126,7 @@ export function diffInDays(d1, d2) {
   const t1 = d1.getTime();
   const diff = t2 - t1;
   const i = diff / dayInMilli;
-  return parseInt(i, 10);
+  return Math.floor(i);
 }
 
 export function diffInWeeks(d1, d2) {
@@ -127,7 +134,7 @@ export function diffInWeeks(d1, d2) {
   const t1 = d1.getTime();
   const diff = t2 - t1;
   const i = diff / weekInMilli;
-  return parseInt(i, 10);
+  return Math.floor(i);
 }
 
 export function diffInMonths(d1, d2) {
@@ -135,10 +142,9 @@ export function diffInMonths(d1, d2) {
   const d2Y = d2.getFullYear();
   const d1M = d1.getMonth();
   const d2M = d2.getMonth();
-  return (d2M + 12 * d2Y) - (d1M + 12 * d1Y);
+  return d2M + 12 * d2Y - (d1M + 12 * d1Y);
 }
 
 export function diffInYears(d1, d2) {
   return d2.getFullYear() - d1.getFullYear();
 }
-

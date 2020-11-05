@@ -28,7 +28,7 @@ function _prepareDate(date) {
   return year + '-' + _addZero(month) + '-' + _addZero(day) + '-' + _addZero(hours) + ':00';
 }
 
-export function mergeObjects(obj1, obj2, leftToRight) {
+export function mergeObjects(obj1, obj2, leftToRight = false) {
   const mergeResult = {};
   if (leftToRight) {
     for (const attrname in obj1) {

@@ -5,6 +5,7 @@
 export const TOKEN_KEY = 'id_token';
 
 class LocalStorageManager {
+  token: any;
 
   constructor() {
     this.token = this.getToken();

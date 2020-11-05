@@ -78,7 +78,7 @@ export function arrayClassification(Class, arr) {
   return classificatedArr;
 }
 
-export function itemByProperty(arr, propertyName, propertyValue, ifCallback, indexOnly) {
+export function itemByProperty(arr, propertyName, propertyValue, ifCallback?, indexOnly?) {
   for (const [index, element] of arr.entries()) {
     const nestedProp = propertyName.indexOf('.') > -1 ?
       UtilService.getNestedProp(element, propertyName) :

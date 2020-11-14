@@ -1,4 +1,3 @@
-/* eslint-disable no-bitwise */
 /**
  * Created by Eryk Mariankowski on 20.07.2017.
  */

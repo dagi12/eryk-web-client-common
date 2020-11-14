@@ -1,16 +1,11 @@
-import {prepareDateString} from './date.service';
-import {UtilService} from './util.service';
+import { prepareDateString } from './date.service';
+import { UtilService } from './util.service';
 
 export function deleteByProperty(arr, propertyName, propertyValue, callback) {
-  for (let i = 0; i < arr.length; ++i) {
-    const item = arr[i];
-    if (item[propertyName] === propertyValue) {
-      arr.splice(i, 1);
-      if (callback) {
-        callback();
-      }
-      break;
-    }
+  const found = arr.find((item) => item[propertyName] === propertyValue);
+  if (found) {
+    arr.splice(arr.indexOf(found), 1);
+    callback && callback();
   }
 }
 
@@ -59,7 +54,7 @@ export function iterateTwoArrays(arr1, arr2, callback) {
   if (!arr1 || !arr2 || arr1.length !== arr2.length) {
     return;
   }
-  for (let i = 0; i < arr1.length; ++i) {
+  for (let i = 0; i < arr1.length; i += 1) {
     callback(arr1[i], arr2[i]);
   }
 }
@@ -86,11 +81,12 @@ export function _itemByProperty(arr, propertyName, propertyValue, ifCallback, in
       element[propertyName];
     if (nestedProp === propertyValue && indexOnly) {
       return index;
-    } else if ((ifCallback && ifCallback(element) && nestedProp === propertyValue) ||
+    }
+    if ((ifCallback && ifCallback(element) && nestedProp === propertyValue) ||
       (!ifCallback && nestedProp === propertyValue)) {
       return {
         item: element,
-        index: index
+        index
       };
     }
   }
@@ -98,7 +94,7 @@ export function _itemByProperty(arr, propertyName, propertyValue, ifCallback, in
 
 export function itemByFnResult(arr, fnName, fnValue) {
   let result = null;
-  arr.some(element => {
+  arr.some((element) => {
     let value;
     if (element[fnName]) {
       value = element[fnName]();
@@ -107,6 +103,7 @@ export function itemByFnResult(arr, fnName, fnValue) {
       result = element;
       return true;
     }
+    return false;
   });
   return result;
 }
@@ -141,13 +138,14 @@ export function objectNotEmpty(model) {
 }
 
 export function firstFreeIndex(arr) {
-  let index = -1, condition;
+  let index = -1;
+  let
+    condition;
   do {
     index += 1;
     condition = arr.length === 0 || !containsProperty(arr, 'index', index);
     if (condition) {
       return index;
     }
-
   } while (!condition);
 }

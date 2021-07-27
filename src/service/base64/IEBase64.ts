@@ -14,7 +14,7 @@ export default class IEBase64 {
     let chr1, chr2, chr3, enc1, enc2, enc3, enc4;
     let i = 0;
 
-    input = Utf8Encoder.utf8_encode(input);
+    input = Utf8Encoder.utf8Encode(input);
 
     while (i < input.length) {
 
@@ -72,7 +72,7 @@ export default class IEBase64 {
 
     }
 
-    output = Utf8Encoder.utf8_decode(output);
+    output = Utf8Encoder.utf8Decode(output);
 
     return output;
 

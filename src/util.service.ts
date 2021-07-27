@@ -52,7 +52,7 @@ export function mergeObjects(obj1, obj2, leftToRight = false) {
 }
 
 export function getUrl(fileName) {
-  return fileName.replace(/^.*[\\\/]/, '');
+  return fileName.replace(/^.*[\\/]/, '');
 }
 
 export class UtilService {
